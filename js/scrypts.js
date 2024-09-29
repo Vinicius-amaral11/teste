@@ -24,6 +24,7 @@ let timeLeft = 60;
 let timer;
 let multiplier = 1; // Multiplicador inicial
 let resetMultiplierTimeout; // Timeout para reiniciar o multiplicador após 5 segundos
+let gameActive = false; // Controle para saber se o jogo está ativo
 
 const emojis = ['🍎', '🍌', '🍇', '🍉', '🍓', '🍒', '🍍', '🍑', '🍋', '🍈', '🥥', '🍏', '🥝', '🍊', '🍐', '🍭', '🍬', '🍫'];
 
@@ -103,7 +104,6 @@ function checkForMatch() {
 
     } else {
         unflipCards();
-        // Reinicia o timeout para voltar o multiplicador a 1x se não houver acertos dentro de 5 segundos
         resetMultiplier();
     }
 }
@@ -160,6 +160,7 @@ function startGame(mode) {
     scoreDisplay.textContent = score;
     multiplier = 1; // Reseta o multiplicador ao iniciar
     multiplierDisplay.textContent = multiplier.toFixed(1); // Mostra o multiplicador resetado
+    gameActive = true; // Marca o jogo como ativo
     createBoard(mode);
 }
 
@@ -189,6 +190,12 @@ backToStartButton.addEventListener('click', () => {
     startScreen.style.display = 'flex';
     gameScreen.style.display = 'none';
     rankingScreen.style.display = 'none';
+    
+    // Se o jogo estava ativo, não exibe a mensagem de pontuação final
+    if (gameActive) {
+        clearInterval(timer);
+        gameActive = false; // Reseta o status do jogo
+    }
 });
 
 backToGameButton.addEventListener('click', () => {
