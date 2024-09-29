@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Memória</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div id="start-screen">
+        <h1>Jogo da Memória</h1>
+        <input type="text" id="player-name" placeholder="Digite seu nome" required>
+        <button id="easy-mode">Fácil (4x4)</button>
+        <button id="hard-mode">Difícil (6x6)</button>
+    </div>
+
+    <div id="game-screen" style="display:none;">
+        <nav>
+            <button id="back-to-start">Voltar ao Início</button>
+        </nav>
+        <div id="score-display">Pontuação: <span id="score">0</span></div>
+        <div id="timer-display">Tempo: <span id="timer">60</span> segundos</div>
+        <div id="multiplier-display">Multiplicador: <span id="multiplier">1</span>x</div>
+        <div id="game-board"></div>
+        <button id="reset-game">Reiniciar Jogo</button>
+    </div>
+
+    <div id="ranking-screen" style="display:none;">
+        <h2>Ranking</h2>
+        <br>
+        <ul id="ranking-list"></ul>
+        <button id="back-to-game">Voltar ao Jogo</button>
+    </div>
+
+    <script src="/js/scrypts.js"></script>
+</body>
+</html>
